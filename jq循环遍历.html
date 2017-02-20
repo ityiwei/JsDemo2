@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="jquery-1.7.2.js"></script>
+<script>
+	$(function(){
+		$('input').each(function(index,element){
+			$(this).click(function(){
+				alert(this.value);
+			});
+		});
+	});
+</script>
+</head>
+
+<body>
+	<input type="button" value="电影" class="on">
+	<input type="button" value="小说">
+	<input type="button" value="音乐">
+</body>
+</html>

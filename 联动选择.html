@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+	window.onload = function(){
+		var oAll = document.getElementById('all');
+		var oBox = document.getElementById('box');
+		var aInp = oBox.getElementsByTagName('input');
+		oAll.addEventListener('click',function(){
+			if(oAll.checked == true){
+				for(var i = 0;i<aInp.length;i++){
+					aInp[i].checked = true;
+				}
+			}else{
+				for(var i = 0;i<aInp.length;i++){
+					aInp[i].checked = false;
+				}
+			}
+		},false);
+		for(var i = 0;i<aInp.length;i++){
+			aInp[i].onclick = function(){
+				var count = 0;
+				for(var i = 0;i<aInp.length;i++){
+					if(aInp[i].checked == true){
+						count++;
+					}
+				}
+				if(count == aInp.length){
+					oAll.checked = true;
+				}else{
+					oAll.checked = false;
+				}
+			};
+		}
+	};
+</script>
+</head>
+
+<body>
+	全选：<input type="checkbox" id="all">
+	<hr/>
+		<div id="box">
+			1<input type="checkbox">
+			2<input type="checkbox">
+			3<input type="checkbox">
+			4<input type="checkbox">
+		</div>
+	
+</body>
+</html>

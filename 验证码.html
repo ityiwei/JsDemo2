@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+	window.onload = function(){
+		var oFs = document.getElementById('fs');
+		oFs.addEventListener('click',function(){
+			var t = 5;
+			var timer;
+			clearInterval(timer);
+			timer = setInterval(function(){
+				oFs.value = '请稍等'+t+'秒后可重新发送';
+				oFs.disabled = true;
+				t--;
+				if(t == -1){
+					t = 5;
+					clearInterval(timer);
+					oFs.value = '再次获取验证码';
+					oFs.disabled = false;
+				}
+			},1000);
+		},false);
+		
+	};
+</script>
+</head>
+
+<body>
+	<input type="button" id="fs" value="点击发送验证码">
+</body>
+</html>

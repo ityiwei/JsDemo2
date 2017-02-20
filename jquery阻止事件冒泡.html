@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="jquery-1.7.2.js"></script>
+<script>
+	$(function(){
+		$(document).click(function(ev){
+			alert('document');
+		});
+		$('body').click(function(){
+			alert('body');
+		});
+		$('input').click(function(ev){
+			alert('input');	
+			ev.stopPropagation();
+		});
+	});
+</script>
+</head>
+
+<body>
+	<input type="button" value="fdasfdas">
+</body>
+</html>

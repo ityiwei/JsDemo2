@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+	function toDou(n){
+		return n<10?'0'+n:''+n;
+	}
+	function shuffle(arr){
+		arr.sort(function(){
+			return Math.random() - 0.5;
+		});
+		return arr;
+	}
+	var arr = [];
+	for(var i = 0;i<33;i++){
+		arr.push(i+1);
+	}
+	for(var i = 0;i<arr.length;i++){
+		arr[i] = toDou(arr[i]);
+	}
+	document.write(shuffle(arr).splice(0,6));
+</script>
+</head>
+
+<body>
+</body>
+</html>

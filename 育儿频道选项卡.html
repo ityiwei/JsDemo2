@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	*{
+		padding:0;
+		margin:0;
+	}
+	ul li{ list-style:none;}
+	a{ text-decoration:none;}
+	.clearfix:after{content: '';display: block;clear:both;}
+	.clearfix{zoom:1;}
+	#box{
+		height:200px;
+		float:left;
+	}
+	#box li{ height:100%; float:left; background-color:#ccc; border:1px solid red; border-right:none; position:relative; border-bottom:1px solid #00C;}
+	#box .li_right{ border-right:1px solid red;}
+	#box div{ display:none; width:150px; height:100%; background-color:aqua; float:left;}
+	#box a{ width:30px; height:100%; font-size:20px; text-align:center; font-family:"微软雅黑"; float:left; color:#666; padding:10px 10px 0; font-weight:bold;}
+	#box .active{ color:red;}
+
+/*		*{padding: 0;}
+		ul li{list-style: none;}
+		a{text-decoration: none;}
+		.clearfix:after{content: '';display: block;clear:both;}
+		.clearfix{zoom:1;}
+
+		#box{height: 130px;float: left;}
+		#box li{background: #ccc;height: 100%;position: relative;float: left;border: 1px solid #333;border-right: none;}
+		#box .li_spe{border-right: 1px solid #333;}
+		#box a{font-size: 20px;color: #666;font-family: '微软雅黑';font-weight: bold;height: 100%;width: 30px;text-align: center;padding:10px 10px 0;float: left;}
+		#box .active{color: red;}
+		#box div{width: 150px;height: 100%;display: none;background: red;float: left;}
+
+*/</style>
+<script>
+	window.onload = function(){
+/*		var oBox = document.getElementById('box');
+		var aLi = document.getElementsByTagName('li'),
+			aA = oBox.getElementsByTagName('a'),
+			aDiv = oBox.getElementsByTagName('div');
+		var iNow = 0;
+		var timer;
+		function tab(){
+			for(var i = 0;i<aLi.length;i++){
+				aA[i].className = '';
+				aDiv[i].style.display = 'none';
+			}
+			aA[iNow].className = 'active';
+			aDiv[iNow].style.display = 'block';
+		};
+*/			var oBox=document.getElementById('box');
+			var aLi=oBox.getElementsByTagName('li');
+			var aA=oBox.getElementsByTagName('a');
+			var aDiv=oBox.getElementsByTagName('div');
+			function tab(){
+				for(var i=0;i<aLi.length;i++){
+					aA[i].className='';
+					aDiv[i].style.display='none';
+				}
+				aA[iNow].className='active';
+				aDiv[iNow].style.display='block';
+			}
+				var iNow = 0;
+		var timer;
+
+		
+/*for(var i=0;i<aLi.length;i++){
+			aLi[i].index=i;
+			aLi[i].onmouseover=function(){
+				iNow=this.index;
+				tab();
+			};
+		}
+*/		
+			for(var i=0;i<aLi.length;i++){
+				aLi[i].index=i;
+				//console.log(index);
+				aLi[i].onmouseover=function(){
+					iNow=this.index;
+					tab();
+				};
+			}
+/*			var iNow = 0;
+			var timer = null;
+			clearInterval(timer);
+			timer = setInterval(next,500);
+				function next(){
+					if(iNow == aLi.length){
+						iNow = -1;
+						console.log(iNow);
+					}
+					
+					tab();
+					iNow++;
+				}
+*/		
+			var iNow = 0;
+			var timer = null;
+			clearInterval(timer);
+			timer = setInterval(next,500);
+			function next(){
+				if(iNow==aLi.length){
+					iNow=0;
+					console.log(iNow);
+				}
+				tab();
+				iNow++;
+			}
+
+oBox.onmouseover = function(){
+			clearInterval(timer);
+		};
+		oBox.onmouseout = function(){
+			timer = setInterval(next,500);
+				function next(){
+					if(iNow==aLi.length){
+						iNow=0;
+					}
+					tab();
+					iNow++;
+				}
+		};
+	};
+
+</script>
+</head>
+
+<body>
+	<ul id="box" class="clearfix">
+		<li class="clearfix">
+			<a href="javascript:;">身体事儿</a>
+			<div>说说身体的事儿</div>
+		</li>
+		<li class="clearfix">
+			<a href="javascript:;">心理事儿</a>
+			<div>说说心理的事儿</div>
+		</li>
+		<li class="clearfix">
+			<a href="javascript:;">私密事儿</a>
+			<div>说说私密的事儿</div>
+		</li>
+		<li class="li_spe clearfix">
+			<a href="javascript:;">悦养生活</a>
+			<div>说说生活的事儿</div>
+		</li>
+	</ul>
+</body>
+</html>
