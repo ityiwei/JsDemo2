@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+	function sort_find(n,s,e){
+		if(s>e){
+			return false;
+		}else if(s == e){
+			if(arr[s] == n){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		var c = Math.floor((s+e)/2);
+		if(arr[c] == n){
+			return true;
+		}else{
+			if(arr[c]<n){
+				//右边 也就是传的值大于中间数
+				return sort_find(n,c+1,e);
+			}else{
+				return sort_find(n,s,c);
+			}
+		}
+	}
+	function sort_add(arr,n){
+		//也可用！取反
+		if(sort_find(n,0,arr.length-1) == false){
+			arr.push(n);
+			arr.sort(function (n1,n2){
+				return n1 -n2;
+			});
+		}
+	}
+	var arr = [];
+	sort_add(arr,19);
+	sort_add(arr,16);
+	sort_add(arr,20);
+	sort_add(arr,17);
+	sort_add(arr,20);
+	alert(sort_find(15,0,arr.length-1));
+	document.write(arr);
+</script>
+</head>
+
+<body>
+</body>
+</html>

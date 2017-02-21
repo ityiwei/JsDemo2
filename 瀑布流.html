@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	#box{
+		width:1000px;
+		margin:0 auto;
+	}
+	ul{
+		width:311px;
+		border:1px solid #ccc;
+		float:left;
+		margin:0 10px;
+		list-style:none;
+	}
+	ul li{
+		width:100%;
+		margin:10px 0;
+		height:150px;
+		background-color:#ccc;
+	}
+</style>
+<script>
+	window.onload = function(){
+		var oBox =document.getElementById('box');
+		var aUl = oBox.children;
+		function rnd(m,n){
+			return parseInt(m+Math.random()*(n-m));
+		}
+		function rndSm(m,n){
+			return parseFloat(m+Math.random()*(n-m));
+		}
+		function createLi(){
+			var oLi = document.createElement('li');
+			oLi.style.height = rnd(100,300)+'px';
+			//oLi.style.background = 'rgb('+rnd(0,256)+','+rnd(0,256)+','+rnd(0,256)+')';
+			oLi.style.background = 'rgba('+rnd(0,256)+','+rnd(0,256)+','+rnd(0,256)+','+rndSm(0,1)+')';
+			return oLi;
+		}
+			//1.生成20个li
+			//2成一个高度和颜色随机的li
+			//3找当前最短的ul
+			//4将li插入到最短的ul中
+
+		function createLis(){
+			for(var i = 0 ;i<20;i++){
+				var oLis = createLi();
+				var arr = [];
+				console.log(oLis);
+				for(var j = 0;j<aUl.length;j++){
+					arr.push(aUl[j]);
+				}
+				arr.sort(function(ul1,ul2){
+					return ul1.offsetHeight - ul2.offsetHeight;
+				});
+				arr[0].appendChild(oLis);
+				
+			}
+		}
+		createLis();
+		window.onscroll = function (){
+			//获取滚动距离
+			var sT = document.documentElement.scrollTop||document.body.scrollTop;
+			//获取可视区高度
+			var cT = document.documentElement.clientHeight;
+			var scrollBottom = sT+cT;
+			//判断内容高是否小于等于滚动+可视区高度，生成li
+			if(document.body.scrollHeight <= scrollBottom){
+				createLis();
+			}
+		};
+	};
+</script>
+</head>
+
+<body>
+	<div id="box">
+		<ul></ul>
+		<ul></ul>
+		<ul></ul>
+	</div>
+</body>
+</html>

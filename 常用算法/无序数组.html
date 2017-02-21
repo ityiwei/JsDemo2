@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+	function unsort_find(arr,n){
+		for(var i = 0;i<arr.length;i++){
+			if(n == arr[i]){
+				return true;	
+			}
+		}
+		return false;
+	}
+	function unsort_add(arr,n){
+		//取反 没找到就添加进去
+		if(!unsort_find(arr,n)){
+			arr.push(n);
+		}
+	}
+
+	var arr = [];
+	unsort_add(arr,16);
+	unsort_add(arr,17);
+	unsort_add(arr,18);
+	unsort_add(arr,19);
+	unsort_add(arr,20);
+	alert(unsort_find(arr,20));
+	document.write(arr);
+</script>
+</head>
+
+<body>
+</body>
+</html>

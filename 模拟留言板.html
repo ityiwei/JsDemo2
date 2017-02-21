@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	*{
+		padding:0;
+		margin:0;
+	}
+	#box{
+		width:400px;
+		margin:50px auto;
+		border:1px solid #ccc;
+		background-color:#f4f4f4;
+		padding:10px;
+	}
+	#box li{
+		list-style:none;
+		margin-bottom:5px;
+	}
+	.fill_in{
+		margin-bottom:10px;
+		font-size:14px;
+	}
+	.fill_in li {
+		padding:5px 0;
+	}
+	.fill_in #txt{
+		width:300px;
+		height:30px;
+		line-height:30px;
+		border:1px solid #ccc;
+	}
+	#con{
+		height:100px;
+		width:302px;
+		line-height:30px;
+		border:1px solid #ccc;
+		vertical-align:top;
+		overflow:auto;
+	}
+	#btn{
+		width:100px;
+		height:30px;
+		border:1px solid #ccc;
+		background-color:#fff;
+		position:relative;
+		left:42px;
+	}
+	#message{
+		display:none;
+		}
+	#message h2{
+		font-size:14px;
+		font-weight:normal;
+		border-bottom:1px solid #ccc;
+		background-color:#ddd;
+		padding:6px 0 4px 10px;
+	}
+	#message li{
+		background-color:#f9f9f9;
+		border-bottom:1px solid #ccc;
+		color:#666;
+		margin:5px 10px 5px 0;
+	}
+	#message h3{
+		padding:10px;
+		font-size:14px;
+		line-height:24px;
+		border-bottom:1px solid #ccc;
+	}
+	#message p{
+		line-height:24px;
+		padding:0 10px 10px;
+		}
+</style>
+<script>
+	window.onload = function(){
+		var oBox= document.getElementById('box');
+		var oFill= oBox.querySelector('.fill_in');
+		var oTxt = document.getElementById('txt');
+		var oCon = document.getElementById('con');
+		var oBtn = document.getElementById('btn');
+		var oMe = document.getElementById('message');
+		var oUl = oMe.children[0]; 
+		oBtn.onclick = function(){
+			if(oTxt.value==''||oCon.value == ''){
+				alert('请输入内容');
+				return;
+			}
+			var oLi = document.createElement('li');
+			oLi.innerHTML = '<h3>'+oTxt.value+'</h3>'+'<p>'+oCon.value+'</p>';
+			if(oUl.children.length == 0){
+				oUl.appendChild(oLi);
+				oTxt.value = '';
+				oCon.value = '';
+			}else{
+				oUl.insertBefore(oLi,oUl.children[0])
+			}
+			oMe.style.display='block';
+		};
+	};
+</script>
+</head>
+
+<body>
+	<div id="box">
+		<ul class="fill_in">
+			<form>
+				<li>姓名：<input type="text" id="txt"></li>
+				<li>内容：<textarea id="con"></textarea></li>
+				<li><input type="button" value="提交" id="btn"></li>
+			</form>
+		</ul>
+		<div id="message">
+			<h2>显示留言</h2>
+			<ul></ul>
+		</div>
+	</div>
+</body>
+</html>

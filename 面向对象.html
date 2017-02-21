@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.showName = function(){
+		return this.name;
+	};
+	Person.prototype.showAge = function(){
+		return this.age;
+	};
+	var p1 = new Person('aoisola',30);
+	function Workjob(name,age,work){
+		Person.apply(this,arguments);
+		this.work = work;
+	};
+	Workjob.prototype = new Person();
+	Workjob.prototype.constructor = Workjob;
+	
+	Workjob.prototype.showJob = function(){
+		return this.work ;
+	};
+
+/*	function Worker(name,age,job){
+		//继承属性
+		Person.apply(this,arguments);
+		this.job = job;
+	}
+	//var arr = [12,5,8];
+	//var arr2 = arr;
+	//arr2.push(7);
+	//继承方法
+	Worker.prototype = new Person();
+	Worker.prototype.constructor = Worker;
+	Worker.prototype.showJob = function(){
+		return this.job;
+	};
+*/
+	var p2 = new Workjob('zz',17,'xsm');
+	alert(p2.showJob());
+</script>
+</head>
+
+<body>
+</body>
+</html>

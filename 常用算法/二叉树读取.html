@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+	var root = null;
+	function bt_add(node,n){
+		if(root == null){
+			root = {
+				value:n,
+				l:null,
+				r:null
+			};
+		}else{
+			if(node.value == n){
+				return;
+			}else{
+				if(node.value<n){
+					if(node.r == null){
+						node.r = {
+							value:n,
+							l:null,
+							r:null
+						};
+					}else{
+						bt_add(node.r,n);
+					}
+				}else{
+					if(node.l == null){
+						node.l = {
+							value:n,
+							l:null,
+							r:null
+						};
+					}else{
+						bt_add(node.l,n);
+					}
+				}
+			}
+		}
+	}
+	//读取
+	function bt_find(node,n){
+		if(root == null){
+			return false;
+		}else{
+			if(node.value == n){
+				return true;
+			}else{
+				if(node.value<n){
+					if(node.r == null){
+						return false;
+					}else{
+						return bt_find(node.r,n);
+					}
+				}else{
+					if(node.l == null){
+						return false;
+					}else{
+						return bt_find(node.l,n);
+					}
+				}
+			}
+		}
+	}
+	bt_add(root,17);
+	bt_add(root,12);
+	bt_add(root,13);
+	bt_add(root,21);
+	bt_add(root,20);
+	bt_add(root,19);
+	document.write(bt_find(root,18));
+</script>
+</head>
+
+<body>
+</body>
+</html>

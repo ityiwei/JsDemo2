@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+	var arr = [2,5,1,6,4,8,65,64,67];
+	function findMin(start,arr){
+		var iMin = arr[start];
+		var iMinIndex = start;
+		for(var i = start+1;i<arr.length;i++){
+			if(arr[i]<iMin){
+				iMin = arr[i];
+				iMinIndex = i;
+			}
+		}
+		return iMinIndex;
+	}
+	function selectionSort(arr){
+		var tmp;
+		for(var i = 0;i<arr.length;i++){
+			var n = findMin(i,arr);
+			tmp = arr[i];
+			arr[i] = arr[n];
+			arr[n] = tmp;	
+		}
+		return arr;
+	}
+	document.write(selectionSort(arr));
+</script>
+</head>
+
+<body>
+</body>
+</html>

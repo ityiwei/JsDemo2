@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+	var arr = [3,0,2,5,15,12,1,14,7];
+	var car;
+	function bubbleSort(){
+		for(var i = 0;i<arr.length;i++){
+			for(var j = 0;j<arr.length;j++){
+				//console.log(arr[i+1]);
+				if(arr[i+1]<arr[j]){		//i+1 j+1 区别???
+					car = arr[i+1];
+					arr[i+1] = arr[j];
+					arr[j] = car;
+				}
+			}
+		}
+		return arr;
+	}
+	document.write(bubbleSort(arr)+'i+1');
+</script>
+</head>
+
+<body>
+</body>
+</html>

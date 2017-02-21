@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+	var arr = [16,26,21,20,17,25,24,18,19];
+	function quickSort(arr){
+		if(arr.length == 0){
+			return null;
+		}else if(0 == arr.length-1){
+			return [arr[0]];
+		}else if(0 == (arr.length-1)-1){
+			if(arr[0]<arr[arr.length-1]){
+				return [arr[0],arr[arr.length-1]];
+			}else{
+				return [arr[arr.length-1],arr[0]];
+			}
+		}
+		var cIndex = Math.floor((0+arr.length-1)/2);
+		var c = arr.splice(cIndex,1);
+		//console.log(c); //17
+		var l = [];
+		var r = [];
+		for(var i = 0;i<arr.length;i++){
+			if(arr[i]<c){
+				l.push(arr[i]);
+			}else{
+				r.push(arr[i]);
+			}
+		}
+			//l[]加中间数c加r[]
+		return quickSort(l).concat(c,quickSort(r));
+	}
+	document.write(quickSort(arr));
+</script>
+</head>
+
+<body>
+</body>
+</html>
