@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	
+</style>
+<script>
+	window.onload = function(){
+		var timer = null;
+		time();
+		clearInterval(timer);
+		function time(){
+			var oTime = document.getElementById('time');
+			var myDate = new Date();
+			var y = myDate.getFullYear();
+			var m = myDate.getMonth();
+			var d = myDate.getDate();
+			var h = myDate.getHours();
+			var hm = myDate.getMinutes();
+			var s = myDate.getSeconds();
+			var week = myDate.getDay();
+			var arr = ['日','一','二','三','四','五','六'];
+			oTime.innerHTML = y+'年'+m+'月'+d+'日'+h+'时'+toDou(hm)+'分'+toDou(s)+'秒'+' '+'星期'+arr[week];
+		}
+		timer = setInterval(time,1000);
+			
+	};
+		function toDou(n){
+			return n<10?'0'+n:''+n;
+		}
+</script>
+</head>
+
+<body>
+	<div id="time"></div>
+</body>
+</html>

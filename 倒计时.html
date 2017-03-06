@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+	window.onload = function(){
+		time();
+		var timer =null;
+		clearInterval(timer);
+		function toDou(n){
+			return n<10?'0'+n:''+n;
+		}
+		function time(){
+			var curTime = new Date();
+			var endTime = new Date('2017/10/1,12:03:03');
+			var leftTime = parseInt((endTime.getTime() - curTime.getTime())/1000);
+			var d = parseInt(leftTime/(24*60*60));
+			var h = parseInt(leftTime/(60*60)%24);
+			var m = parseInt(leftTime/60%60);
+			var s = parseInt(leftTime%60);
+			document.getElementById('time').innerHTML = d+'天'+h+'小时'+toDou(m)+'分'+toDou(s)+'秒';
+		}
+		timer = setInterval(time,1000);
+	};
+</script>
+</head>
+
+<body>
+	<div>2017年国庆节还是有<span id="time"></span></div>
+</body>
+</html>
